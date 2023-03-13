@@ -1,0 +1,23 @@
+def solution(product):
+    if product[0] == max(product):
+        return 0
+    else:
+        stack = []
+        answer = 0
+        for k in product:
+            while stack and stack[-1] > k:
+                cnt = ((stack[-1])*(len(stack)-1) - sum(stack[:-1]))
+                answer += cnt
+                stack = []
+                
+            stack.append(k)
+    
+    if stack[-1] == max(stack):
+        plus = ((stack[-1])*(len(stack)-1) - sum(stack[:-1]))
+        
+    final = answer + plus
+    return final
+                
+            
+            
+print(solution([1,2,1,10]))
