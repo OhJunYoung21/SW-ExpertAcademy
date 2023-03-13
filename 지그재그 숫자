@@ -1,0 +1,32 @@
+def compare(list_1, list_2):
+    if len(list_1) == len(list_2):
+        cnt = 0
+        for k in range(len(list_2)):
+            cnt += (list_1[k] * list_2[k])
+        return cnt
+    
+    elif len(list_1) > len(list_2):
+        short = list_2
+        big = list_1
+    else:
+        short = list_1
+        big = list_2
+    
+    limit = len(short)
+    final = []
+    while limit <= len(big):
+        answer = 0
+        for j in range(len(short)):
+            answer += (short[j] * big[limit - len(short):limit][j])
+        final.append(answer)
+        limit += 1
+    return max(final)
+
+T = int(input())
+
+for test_case in range(1, T + 1):
+    a, b = list(map(int, input().split()))
+    d1 = list(map(int, input().split()))
+    d2 = list(map(int, input().split()))
+    answer = compare(d1, d2)
+    print(answer)
