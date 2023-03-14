@@ -1,0 +1,41 @@
+from itertools import combinations
+
+def solution(d1):
+    
+    if len(set(d1)) == 1:
+        return int(len(d1) + 1)
+        
+    else:
+        cnt = 2
+        
+        compare = list(set(d1))
+        
+        compare.append(0)
+        
+        while cnt < (len(d1) + 1):
+            result = list(combinations(d1,cnt))
+            for j in result:
+                if sum(j) not in compare:
+                    compare.append(sum(j))
+                else:
+                    continue
+            cnt += 1
+    
+    return len(compare)
+
+
+
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    
+    cnt = int(input())
+    exp = list(map(int,input().split()))
+    
+    num_1 = solution(exp)
+    
+    print("#{} {}".format(test_case,num_1))
+    
+    
+    
+    
