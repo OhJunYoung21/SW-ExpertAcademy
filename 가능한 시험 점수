@@ -1,41 +1,14 @@
-from itertools import combinations
-
-def solution(d1):
+def fun(scores):
     
-    if len(set(d1)) == 1:
-        return int(len(d1) + 1)
-        
-    else:
-        cnt = 2
-        
-        compare = list(set(d1))
-        
-        compare.append(0)
-        
-        while cnt < (len(d1) + 1):
-            result = list(combinations(d1,cnt))
-            for j in result:
-                if sum(j) not in compare:
-                    compare.append(sum(j))
-                else:
-                    continue
-            cnt += 1
+    check = [1] + [0]*sum(scores)
     
-    return len(compare)
-
-
-
-T = int(input())
-# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
-for test_case in range(1, T + 1):
+    value = [0]
     
-    cnt = int(input())
-    exp = list(map(int,input().split()))
+    for j in scores:
+        for k in value:
+            if check[j + k] == 0:
+                check[j + k] = 1 
+                value.append(j + k)  #value에 (0+2) = 2가 추가된다.
+    return len(value) 
     
-    num_1 = solution(exp)
-    
-    print("#{} {}".format(test_case,num_1))
-    
-    
-    
-    
+print(fun([2,3,5]))
