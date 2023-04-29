@@ -1,0 +1,42 @@
+a = int(input())
+
+
+for k in range(a):
+    m = int(input())
+    
+    list_1 = [[0 for k in range(m)] for k in range(m)]
+    
+    dr = [0,1,0,-1]
+    dc = [1,0,-1,0]
+    
+    row = 0
+    col = 0 
+    
+    nr = 0
+    nc = 0
+    
+    index = 0
+    
+    count = 1 
+    
+    while count <= m*m:
+        list_1[row][col] = count 
+        
+        nr = row + dr[index]
+        nc = col + dc[index]
+        
+        if nr < 0 or nr >= m or nc < 0 or nc >= m or list_1[nr][nc] != 0:
+            index = (index + 1)%4
+            
+        
+        row += dr[index]
+        col += dc[index]
+        
+        count += 1 
+    
+    print("#{}".format(k+1))
+    
+    for j in range(len(list_1)):
+        for h in list_1[j]:
+            print(h,end = " ")
+        print("")
