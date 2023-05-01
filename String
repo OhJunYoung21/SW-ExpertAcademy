@@ -1,0 +1,16 @@
+for k in range(10):
+    a = int(input())
+
+    find = str(input())
+    
+    words = str(input())
+
+    answer = 0 
+    
+    for cnt in range(len(words)- len(find) + 1):
+        if words[cnt:cnt + len(find)] == find:
+            answer += 1  
+        else:
+            continue 
+    
+    print("#{} {}".format(a,answer))
