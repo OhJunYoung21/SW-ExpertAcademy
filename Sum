@@ -1,0 +1,40 @@
+def search(s):
+    final = []
+    
+    for k in range(len(s)):
+        cnt = sum(s[k])
+        final.append(cnt)
+    
+    for h in range(len(s)):  #0,1,2
+        cnt = 0 
+        for t in range(len(s)):
+            cnt += s[t][h]
+        final.append(cnt)
+        
+    
+    answer_x = 0
+    
+    for h in range(len(s)):
+        answer_x += s[h][h]
+    
+    final.append(answer_x)
+    
+    answer_y = 0
+    
+    for i in range(len(s)):
+        answer_y += s[i][len(s)-i-1]
+        
+    final.append(answer_y)
+    
+    return final  
+    
+    
+for g in range(10):
+    
+    f = int(input())
+    
+    check = [list(map(int,input().split())) for k in range(3)]
+    
+    ans = max(search(check)) 
+    
+    print("#{} {}".format(f,ans))
