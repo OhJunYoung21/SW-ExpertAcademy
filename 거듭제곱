@@ -1,0 +1,20 @@
+def multiple(x,y,prime):
+    
+    if y > 1:
+        y -= 1
+        x = x * prime
+        return multiple (x,y,prime)
+    else:
+        return x 
+
+
+
+
+for j in range(10):
+    a = int(input())
+    
+    n,m = map(int,input().split())
+    
+    answer = multiple(n,m,n)
+    
+    print("#{} {}".format(a,answer))
