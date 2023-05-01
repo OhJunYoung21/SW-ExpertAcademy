@@ -1,0 +1,7 @@
+a = int(input())
+ 
+for k in range(a):
+     
+    cnt = int(input())
+     
+    print("#{} {}".format(k+1,cnt//3))
